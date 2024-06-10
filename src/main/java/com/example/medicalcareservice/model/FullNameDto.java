@@ -35,4 +35,11 @@ public record FullNameDto(
          * and considering 2 spaces ("\s").
          */
         public static final int MIN_FULL_NAME_LENGTH = 2 * 3 + 2;
+
+        /**
+         * Constant representing symbol to divide parts of a {@link FullNameDto}.
+         * Namely, firstName, middleName and lastName, accordingly.
+         */
+        public static final String NAME_DIVIDER = " ";
+
 }
