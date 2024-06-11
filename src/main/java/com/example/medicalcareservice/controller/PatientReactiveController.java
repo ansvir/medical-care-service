@@ -5,7 +5,6 @@ import com.example.medicalcareservice.service.PatientReactiveService;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -16,7 +15,6 @@ import reactor.core.publisher.Mono;
  * @version 0.0.1
  */
 @RestController("/patient")
-@Profile({"dev", "prod"})
 @RequiredArgsConstructor
 public class PatientReactiveController {
 

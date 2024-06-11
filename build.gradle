@@ -53,6 +53,7 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
     runtimeOnly 'org.postgresql:r2dbc-postgresql'
+    runtimeOnly 'io.r2dbc:r2dbc-h2'
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor "org.mapstruct:mapstruct-processor:$mapstructVersion"
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
