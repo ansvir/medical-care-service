@@ -9,13 +9,13 @@ Requires Docker installed on machine.
 
 Use next commands to start and init MySql app database:
 ```shell
-docker run -p 5432:5432 --name medical_care_db -e POSTGRES_PASSWORD=root -d postgres:latest
+docker run -p 5432:5432 --name medical_care_service_db -e POSTGRES_PASSWORD=root -d postgres:latest
 ```
 
 Docker container will start on 5432 port.
 
 ```shell
-docker exec -it medical_care_db bash
+docker exec -it medical_care_service_db bash
 ```
 
 PostgreSQL database container will be opened in bash
@@ -28,7 +28,7 @@ Then enter password:
 ```root```
 
 ```postgresql
-CREATE DATABASE medical_care_db;
+CREATE DATABASE medical_care_service_db;
 ```
 
 This will create empty database.
