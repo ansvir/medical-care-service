@@ -5,14 +5,14 @@ server:
 spring:
   profiles:
     active: ${profile}
-
----
-spring:
   application:
     name: medical-care-service
   jackson:
     date-format: yyyy-MM-dd'T'HH:mm:ss
     time-zone: UTC
+
+---
+spring:
   r2dbc:
     url: r2dbc:postgresql://localhost:5432/medical_care_service_db
     username: postgres
@@ -20,3 +20,11 @@ spring:
   config:
     activate:
       on-profile: dev
+
+---
+spring:
+  r2dbc:
+    url: r2dbc:h2:mem:///medical_care_service_db?options=DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+  config:
+    activate:
+      on-profile: test
