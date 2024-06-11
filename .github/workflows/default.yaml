@@ -11,12 +11,12 @@ on:
 jobs:
 
   build:
-    uses: job/build.yaml
+    uses: ./.github/workflows/job/build.yaml
     with:
       java-version: 17
 
   test:
-    uses: job/test.yaml
+    uses: ./.github/workflows/job/test.yaml
     needs: build
     with:
       java-version: 17
