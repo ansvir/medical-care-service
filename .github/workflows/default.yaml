@@ -11,12 +11,8 @@ on:
 jobs:
 
   build:
-    uses: ./.github/workflows/job/build.yaml
-    with:
-      java-version: 17
+    uses: ./.github/workflows/build.yaml
 
   test:
-    uses: ./.github/workflows/job/test.yaml
+    uses: ./.github/workflows/test.yaml
     needs: build
-    with:
-      java-version: 17
