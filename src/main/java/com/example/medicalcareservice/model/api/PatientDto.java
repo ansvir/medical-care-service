@@ -8,11 +8,12 @@ import jakarta.validation.constraints.PositiveOrZero;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 /**
  * DTO representing patient.
  *
- * @param id Unique identification of patient. Cannot be null
+ * @param id Unique identification of patient.
  * @param name Full name of patient.
  * @param gender patient gender.
  * @param birthDate birthdate of a patient.
@@ -22,8 +23,7 @@ import java.time.LocalDateTime;
 @Builder
 public record PatientDto(
         @Nullable
-        @PositiveOrZero
-        Long id,
+        UUID id,
         @Nullable
         FullNameDto name,
         @Nullable

@@ -8,6 +8,7 @@ import lombok.Builder;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import static com.example.medicalcareservice.model.FullNameDto.MAX_FULL_NAME_LENGTH;
 import static com.example.medicalcareservice.model.FullNameDto.MIN_FULL_NAME_LENGTH;
@@ -25,7 +26,7 @@ import static com.example.medicalcareservice.model.FullNameDto.MIN_FULL_NAME_LEN
 @Builder
 public record Patient(
         @Id
-        Long id,
+        UUID id,
         @Size(min = MIN_FULL_NAME_LENGTH, max = MAX_FULL_NAME_LENGTH)
         @Nullable
         String name,

@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * Reactive service for working with patient domain.
  * Contains (<a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a>) methods for retrieving, updating, creating and deleting patients.
@@ -41,7 +44,16 @@ public class PatientReactiveService {
     }
 
     /**
-     * Saves new patient to database.
+     * Method for retrieving all patients {@code from} and {@code to} by their order.
+     * @return Flux of DTOs (N or zero).
+     */
+    public Flux<PatientDto> findAllPaged(int from, int to) {
+        return patientReactiveRepository.findAllPaged(from, to)
+                .map(patientMapper::toDto);
+    }
+
+    /**
+     * Saves new patient.
      * @param patientDto Patient DTO to save.
      * @return Saved patient DTO.
      */
@@ -52,7 +64,20 @@ public class PatientReactiveService {
     }
 
     /**
-     * Updates existing patient in database.
+     * Saves all new patients.
+     * @param patientDtos Patient DTOs to save.
+     * @return Flux of all saved patients.
+     */
+    public Flux<PatientDto> saveAll(List<PatientDto> patientDtos) {
+        List<Patient> patients = patientDtos.stream()
+                .map(patientMapper::toEntity)
+                .collect(Collectors.toList());
+        return patientReactiveRepository.saveAll(patients)
+                .map(patientMapper::toDto);
+    }
+
+    /**
+     * Updates existing patient.
      * @param id Patient ID.
      * @param patientDto Patient DTO to update.
      * @return Updated patient DTO.

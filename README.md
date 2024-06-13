@@ -7,7 +7,7 @@
 
 Requires Docker installed on machine.
 
-Use next commands to start and init MySql app database:
+Use next commands to start and init PostgreSQL app database:
 ```shell
 docker run -p 5432:5432 --name medical_care_service_db -e POSTGRES_PASSWORD=root -d postgres:latest
 ```
@@ -24,13 +24,10 @@ PostgreSQL database container will be opened in bash
 psql -U postgres
 ```
 
-Then enter password:
-```root```
-
 ```postgresql
 CREATE DATABASE medical_care_service_db;
 ```
 
-This will create empty database.
+This will create an empty database.
 
 ### II. App is ready to run.

@@ -42,4 +42,8 @@ public record FullNameDto(
          */
         public static final String NAME_DIVIDER = " ";
 
+        @Override
+        public String toString() {
+                return firstName + NAME_DIVIDER + middleName + NAME_DIVIDER + lastName;
+        }
 }

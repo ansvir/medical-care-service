@@ -11,12 +11,16 @@ spring:
     date-format: yyyy-MM-dd'T'HH:mm:ss
     time-zone: UTC
 
+app:
+  shell: ${shell.on}
+
 ---
 spring:
   r2dbc:
     url: r2dbc:postgresql://localhost:5432/medical_care_service_db
     username: postgres
     password: root
+
   config:
     activate:
       on-profile: dev
