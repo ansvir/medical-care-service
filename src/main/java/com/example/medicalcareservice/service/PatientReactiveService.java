@@ -10,6 +10,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 /**
@@ -38,17 +39,8 @@ public class PatientReactiveService {
      * Method for retrieving patient by his {@code id}.
      * @return Mono of DTO (one or none).
      */
-    public Mono<PatientDto> findById(Long id) {
+    public Mono<PatientDto> findById(UUID id) {
         return patientReactiveRepository.findById(id)
-                .map(patientMapper::toDto);
-    }
-
-    /**
-     * Method for retrieving all patients {@code from} and {@code to} by their order.
-     * @return Flux of DTOs (N or zero).
-     */
-    public Flux<PatientDto> findAllPaged(int from, int to) {
-        return patientReactiveRepository.findAllPaged(from, to)
                 .map(patientMapper::toDto);
     }
 
@@ -82,7 +74,7 @@ public class PatientReactiveService {
      * @param patientDto Patient DTO to update.
      * @return Updated patient DTO.
      */
-    public Mono<PatientDto> update(Long id, PatientDto patientDto) {
+    public Mono<PatientDto> update(UUID id, PatientDto patientDto) {
         return findById(id).map(patient ->
             new PatientDto(
                     id,
@@ -96,7 +88,7 @@ public class PatientReactiveService {
      * Method for deleting patient by his {@code id}.
      * @return Mono of {@link Void}
      */
-    public Mono<Void> deleteById(Long id) {
+    public Mono<Void> deleteById(UUID id) {
         return patientReactiveRepository.deleteById(id);
     }
 
