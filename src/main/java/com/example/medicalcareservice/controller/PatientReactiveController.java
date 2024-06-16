@@ -3,18 +3,20 @@ package com.example.medicalcareservice.controller;
 import com.example.medicalcareservice.model.api.PatientDto;
 import com.example.medicalcareservice.service.PatientReactiveService;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PositiveOrZero;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.UUID;
 
 /**
  * Base exposed object to work with patient domain.
  *
  * @version 0.0.1
  */
-@RestController("/patient")
+@RestController
+@RequestMapping("/patient")
 @RequiredArgsConstructor
 public class PatientReactiveController {
 
@@ -37,7 +39,7 @@ public class PatientReactiveController {
      * @return Mono of {@link PatientDto}.
      */
     @GetMapping("/{id}")
-    public Mono<PatientDto> findById(@PathVariable @NotNull @PositiveOrZero Long id) {
+    public Mono<PatientDto> findById(@PathVariable @NotNull UUID id) {
         return patientReactiveService.findById(id);
     }
 
@@ -60,7 +62,7 @@ public class PatientReactiveController {
      * @return Mono of updated {@link PatientDto}.
      */
     @PutMapping("/{id}")
-    public Mono<PatientDto> updateById(@PathVariable @NotNull @PositiveOrZero Long id, @RequestBody PatientDto patientDto) {
+    public Mono<PatientDto> updateById(@PathVariable @NotNull UUID id, @RequestBody PatientDto patientDto) {
         return patientReactiveService.update(id, patientDto);
     }
 
@@ -71,7 +73,7 @@ public class PatientReactiveController {
      * @return Mono of {@link Void}.
      */
     @DeleteMapping("/{id}")
-    public Mono<Void> deleteById(@PathVariable Long id) {
+    public Mono<Void> deleteById(@PathVariable @NotNull UUID id) {
         return patientReactiveService.deleteById(id);
     }
 
