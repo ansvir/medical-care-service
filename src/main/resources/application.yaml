@@ -24,11 +24,11 @@ spring:
             scope: openid
         provider:
           keycloak:
-            issuer-uri: http://localhost:8080/realms/medical-care
+            issuer-uri: ${KEYCLOAK_URL}/realms/medical-care
             user-name-attribute: preferred_username
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/medical-care
+          issuer-uri: ${KEYCLOAK_URL}/realms/medical-care
 
 app:
   shell: ${shell.on}

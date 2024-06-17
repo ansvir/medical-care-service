@@ -18,6 +18,11 @@ services:
       - '8080:8080'
     depends_on:
       - postgres
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
   medical-care-service:
     env_file: .env
@@ -34,5 +39,6 @@ services:
       - "8081:8081"
     depends_on:
       - keycloak
+    restart: on-failure
     volumes:
       - ../../../../:/app
