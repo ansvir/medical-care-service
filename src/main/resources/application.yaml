@@ -1,3 +1,6 @@
+server:
+  port: 8081
+
 spring:
   profiles:
     active: ${profile}
@@ -11,6 +14,21 @@ spring:
       enabled: true
   webflux:
     base-path: /api/${api.version}
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: login-app
+            authorization-grant-type: authorization_code
+            scope: openid
+        provider:
+          keycloak:
+            issuer-uri: ${KEYCLOAK_URL}/realms/medical-care
+            user-name-attribute: preferred_username
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_URL}/realms/medical-care
 
 app:
   shell: ${shell.on}
