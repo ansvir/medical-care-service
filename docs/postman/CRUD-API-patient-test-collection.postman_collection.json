@@ -191,8 +191,66 @@
 				"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
 			},
 			"response": []
+		},
+		{
+			"name": "Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "login-app",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "{{current_username}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{current_password}}",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/realms/medical-care/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"realms",
+						"medical-care",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIwVlJLeFQ3YXdZVHNCUk5GajZIemFBZE1TWWFVbGY0WTBfUEFhcklXU0tvIn0.eyJleHAiOjE3MTg1ODMxNjMsImlhdCI6MTcxODU4Mjg2MywianRpIjoiMzljZTVlYWMtYThjYS00ZDJiLWI3Y2EtYTlmM2QxZTkyMmI3IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9tZWRpY2FsLWNhcmUiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiYzU0NTZhNGMtYTkzNC00N2E1LTk2ODUtNGZiYWU4ZDBmMThiIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoibG9naW4tYXBwIiwic2lkIjoiNzFmMWViMDQtOTQ3Zi00ZTY4LTlmOWItYTNmMWVjMmJjNDI3IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjgwODEiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwiZGVmYXVsdC1yb2xlcy1tZWRpY2FsLWNhcmUiLCJQYXRpZW50IiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwgbWljcm9wcm9maWxlLWp3dCIsInVwbiI6InVzZXJfcGF0aWVudCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZ3JvdXBzIjpbIm9mZmxpbmVfYWNjZXNzIiwiZGVmYXVsdC1yb2xlcy1tZWRpY2FsLWNhcmUiLCJQYXRpZW50IiwidW1hX2F1dGhvcml6YXRpb24iXSwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcl9wYXRpZW50In0.NsRd6EDDRyUdxdJiNDPRxwDkzqaVF4HIBRZ4aRIYogrUKi8I0sm5rWY58wbSo-QTBSTid7Jt2Lp8tesLNETWaFCuCLX1W3uy0IhNopZTr_UJuz2LeOg_w05Yfbg-ePf_eMTCaoT_1amtyBimsyn01Fhg8vQy9cPJknTDfVmVtG4RHpAyreB2TSgyrtO8lQ4w0sLcWQjNS8amB-7jNmtod__eqAA77ZW_7AopZ0ndhAj7E2kaolY3B6evE1vswKsvoNOYikfskwIiSF5RbSQWsruhIdbg-NUW0ZWrtgacnsOpp63UK46A39B0F34KipWxanVHqLxwP1RzZTNLA-5oYg",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",
@@ -221,6 +279,16 @@
 		{
 			"key": "test_uuid",
 			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "current_username",
+			"value": "user_patient",
+			"type": "string"
+		},
+		{
+			"key": "current_password",
+			"value": "user",
 			"type": "string"
 		}
 	]
